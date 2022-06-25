@@ -230,7 +230,7 @@ public class DataDAO {
 		   // 1. 연결 
 		   getConnection();
 		   // 2. SQL문장을 만든다 
-		   String sql="SELECT no,name,tel,type,time,parking,menu,poster,score "
+		   String sql="SELECT no,name,tel,type,time,parking,menu,poster,score,price,address "
 				     +"FROM food_house "
 				     +"WHERE no=?";
 		   // 3. MySQL로 SQL문장을 전송 
@@ -251,6 +251,8 @@ public class DataDAO {
 		   vo.setMenu(rs.getString(7));
 		   vo.setPoster(rs.getString(8));
 		   vo.setScore(rs.getDouble(9));
+		   vo.setPrice(rs.getString(10));
+		   vo.setAddress(rs.getString(11));
 		   // 8. 메모리를 닫는다
 		   rs.close();
 	   }catch(Exception ex)
