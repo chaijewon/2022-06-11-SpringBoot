@@ -138,29 +138,39 @@ public class DataDAO {
 	SOSO             NUMBER         
 	BAD              NUMBER 
     */
+   /*
+    *  cno int,
+   poster VARCHAR(2000) NOT NULL,
+   name VARCHAR(300) NOT NULL ,
+   score double NOT NULL,
+   address VARCHAR(2000) NOT NULL,
+   tel VARCHAR(20) NOT NULL,
+   type VARCHAR(100) NOT NULL,
+   price VARCHAR(30) NOT NULL,
+   time VARCHAR(50),
+   parking VARCHAR(100),
+   menu VARCHAR(4000),
+    */
    public void foodHouseInsert(FoodHouseVO vo)
    {
 	   try
 	   {
 		   getConnection();
-		   String sql="INSERT INTO food_house VALUES("
-				     +"?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		   String sql="INSERT INTO food_house(cno,poster,name,score,address,tel,type,price,parking,time,menu) VALUES("
+				     +"?,?,?,?,?,?,?,?,?,?,?)";
 		   ps=conn.prepareStatement(sql);
-		   ps.setInt(1, vo.getNo());
-		   ps.setInt(2, vo.getCno());
-		   ps.setString(3, vo.getPoster());
-		   ps.setString(4, vo.getName());
-		   ps.setDouble(5, vo.getScore());
-		   ps.setString(6, vo.getAddress());
-		   ps.setString(7, vo.getTel());
-		   ps.setString(8, vo.getType());
-		   ps.setString(9, vo.getPrice());
-		   ps.setString(10, vo.getParking());
-		   ps.setString(11, vo.getTime());
-		   ps.setString(12, vo.getMenu());
-		   ps.setInt(13, vo.getGood());
-		   ps.setInt(14, vo.getSoso());
-		   ps.setInt(15, vo.getBad());
+		   ps.setInt(1, vo.getCno());
+		   ps.setString(2, vo.getPoster());
+		   ps.setString(3, vo.getName());
+		   ps.setDouble(4, vo.getScore());
+		   ps.setString(5, vo.getAddress());
+		   ps.setString(6, vo.getTel());
+		   ps.setString(7, vo.getType());
+		   ps.setString(8, vo.getPrice());
+		   ps.setString(9, vo.getParking());
+		   ps.setString(10, vo.getTime());
+		   ps.setString(11, vo.getMenu());
+		   
 		   ps.executeUpdate();
 	   }catch(Exception ex)
 	   {
@@ -228,7 +238,7 @@ public class DataDAO {
 	   try
 	   {
 		   getConnection();
-		   String sql="SELECT cno,link FROM project_food_category "
+		   String sql="SELECT cno,link FROM food_category "
 				     +"ORDER BY 1";
 		   ps=conn.prepareStatement(sql);
 		   ResultSet rs=ps.executeQuery();

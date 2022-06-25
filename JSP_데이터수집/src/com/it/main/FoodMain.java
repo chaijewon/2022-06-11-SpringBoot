@@ -48,8 +48,8 @@ public class FoodMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
         FoodMain fm=new FoodMain();
-        fm.foodCategoryData();
-        //fm.foodHouseData();
+        //fm.foodCategoryData();
+        fm.foodHouseData();
         //fm.foodLocationData();
 	}
 	public void foodCategoryData()
