@@ -274,13 +274,12 @@ public class DataDAO {
 	   try
 	   {
 		   getConnection();
-		   String sql="INSERT INTO seoul_location VALUES(?,?,?,?,?)";
+		   String sql="INSERT INTO seoul_location(name,poster,msg,address) VALUES(?,?,?,?)";
 		   ps=conn.prepareStatement(sql);
-		   ps.setInt(1, vo.getNo());
-		   ps.setString(2, vo.getTitle());
-		   ps.setString(4, vo.getPoster());
-		   ps.setString(5, vo.getMsg());
-		   ps.setString(3, vo.getAddress());
+		   ps.setString(1, vo.getTitle());
+		   ps.setString(2, vo.getPoster());
+		   ps.setString(3, vo.getMsg());
+		   ps.setString(4, vo.getAddress());
 		   ps.executeUpdate();
 	   }catch(Exception ex)
 	   {
