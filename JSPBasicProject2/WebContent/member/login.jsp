@@ -25,13 +25,13 @@
          <tr>
            <td class="text-right" width=30%>ID</td>
            <td width=70%>
-             <input type=text name=id size=15 class="input-sm">
+             <input type=text name=id size=15 class="input-sm" required="required">
            </td>
          </tr>
          <tr>
            <td class="text-right" width=30%>PW</td>
            <td width=70%>
-             <input type=password name=pwd size=15 class="input-sm">
+             <input type=password name=pwd size=15 class="input-sm" required="required">
            </td>
          </tr>
          <tr>

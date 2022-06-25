@@ -1,5 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.it.dao.*"%>
+<%
+    //1. 사용자가 보내준 값을 받는다 
+    // <input type=text name=id size=15 class="input-sm">
+    String id=request.getParameter("id");
+    String pwd=request.getParameter("pwd");
+    // 2. 데이터베이스 연동 
+    DataDAO dao=DataDAO.newInstance(); 
+    String result=dao.isLogin(id, pwd); // NOID , NOPWD , name
+    if(result.equals("NOID")) // ID가 없는 상태
+    {
+%>
+         <script>
+         alert("ID가 존재하지 않습니다!!");
+         history.back(); // 이전 상태로 돌아간다 => 로그인 창  
+         </script>
+<%
+    }
+    else if(result.equals("NOPWD")) // 비밀번호가 틀린 상태
+    {
+%>
+        <script>
+        alert("비밀번호가 틀립니다!!");
+        history.back(); // 이전 상태로 돌아간다 => 로그인 창  
+        </script>
+<%    	
+    }
+    else //로그인 
+    {
+    	// 일부 정보를 서버에 저장 (id,name) => session 
+        session.setAttribute("id", id);
+    	session.setAttribute("name", result);
+    	// 화면 이동 => main.jsp
+    	response.sendRedirect("../main/main.jsp");
+    }
+%>
 <%--
       JSP(JavaServer Page) 
       1. 지시자 => page(JSP파일에 대한 정보) => import 
@@ -40,3 +75,4 @@
            6) 결과값을 브라우저로 전송 ==> VO , List
            7) 닫기  => ResultSet => PreparedStatement , Connection
 --%>
+
