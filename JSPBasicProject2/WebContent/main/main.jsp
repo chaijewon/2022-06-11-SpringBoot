@@ -2,6 +2,24 @@
     pageEncoding="UTF-8"%>
 <%
      String main_jsp="";
+     String mode=request.getParameter("mode");
+     int protocol=0;
+     if(mode==null)
+    	 mode="0";
+     protocol=Integer.parseInt(mode);
+     
+     switch(protocol)
+     {
+        case 0:
+        	main_jsp="../food/category.jsp";
+        	break;
+        case 1:
+        	main_jsp="../food/food_list.jsp";
+        	break;
+        case 2:
+        	main_jsp="../food/food_detail.jsp";
+        	break;
+     }
 %>
 <!DOCTYPE html>
 <html>

@@ -108,7 +108,43 @@ public class DataDAO {
 	   }
 	   return result;
    }
-   // 2. 맛집 카테고리 
+   // 2. 맛집 카테고리 ==> category.jsp
+   public List<FoodCategoryVO> foodCategoryData()
+   {
+	   List<FoodCategoryVO> list=
+			   new ArrayList<FoodCategoryVO>();
+	   try
+	   {
+		   //1. 연결 
+		   getConnection();
+		   //2. SQL문장 
+		   String sql="SELECT cno,title,subject,poster "
+				     +"FROM food_category";
+		   //3. MySQL로 전송 
+		   ps=conn.prepareStatement(sql);
+		   //4. 실행후 결과값 얻기
+		   ResultSet rs=ps.executeQuery();
+		   //5. => List에 값을 담는다 
+		   while(rs.next())
+		   {
+			   FoodCategoryVO vo=new FoodCategoryVO();
+			   vo.setCno(rs.getInt(1));
+			   vo.setTitle(rs.getString(2));
+			   vo.setSubject(rs.getString(3));
+			   vo.setPoster(rs.getString(4));
+			   list.add(vo);
+		   }
+		   rs.close();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();// 에러 확인 
+	   }
+	   finally
+	   {
+		   disConnection();// 닫기
+	   }
+	   return list;
+   }
    // 3. 카테고리별 맛집 출력 
    // 4. 맛집 상세보기 
    // 5. 댓글 => 1. 목록 , 2. 추가 , 3. 수정 , 4. 삭제 => JQuery => 스프링 (VueJS),스프링-부트(react)
