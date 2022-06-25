@@ -146,6 +146,80 @@ public class DataDAO {
 	   return list;
    }
    // 3. 카테고리별 맛집 출력 
+   public List<FoodHouseVO> foodListData(int cno)
+   {
+	   List<FoodHouseVO> list=new ArrayList<FoodHouseVO>();
+	   try
+	   {
+		   // 1. 연결
+		   getConnection();
+		   // 2. SQL문장 
+		   String sql="SELECT no,cno,poster,name,tel,address,type,score "
+				     +"FROM food_house "
+				     +"WHERE cno=?";
+		   // 3. SQL문장 전송 
+		   ps=conn.prepareStatement(sql);
+		   // 4. ?에 값을 채운다 
+		   ps.setInt(1, cno);
+		   // 5. 실행후에 결과값을 가지고 온다 
+		   ResultSet rs=ps.executeQuery();
+		   // 6. List에 값을 채운다 
+		   while(rs.next())
+		   {
+			   FoodHouseVO vo=new FoodHouseVO();
+			   vo.setNo(rs.getInt(1));
+			   vo.setCno(rs.getInt(2));
+			   String poster=rs.getString(3);
+			   poster=poster.substring(0,poster.indexOf("^"));
+			   vo.setPoster(poster);
+			   vo.setName(rs.getString(4));
+			   vo.setTel(rs.getString(5));
+			   String addr=rs.getString(6);
+			   addr=addr.substring(0,addr.lastIndexOf("지"));
+			   vo.setAddress(addr.trim());
+			   vo.setType(rs.getString(7));
+			   vo.setScore(rs.getDouble(8));
+			   list.add(vo);
+		   }
+		   rs.close();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   disConnection();
+	   }
+	   return list;
+   }
+   public FoodCategoryVO categoryInfoData(int cno)
+   {
+	   FoodCategoryVO vo=new FoodCategoryVO();
+	   try
+	   {
+		   // 연결
+		   getConnection();
+		   // SQL문장 
+		   String sql="SELECT title,subject "
+				     +"FROM food_category "
+				     +"WHERE cno=?";
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, cno);
+		   ResultSet rs=ps.executeQuery();
+		   rs.next();
+		   vo.setTitle(rs.getString(1));
+		   vo.setSubject(rs.getString(2));
+		   rs.close();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   disConnection();
+	   }
+	   return vo;
+   }
    // 4. 맛집 상세보기 
    // 5. 댓글 => 1. 목록 , 2. 추가 , 3. 수정 , 4. 삭제 => JQuery => 스프링 (VueJS),스프링-부트(react)
    // ==> 자바 == 자바스크립트 (Rest) => JSON

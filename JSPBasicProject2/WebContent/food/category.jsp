@@ -27,7 +27,7 @@
        %>
                <div class="col-md-3">
 			    <div class="thumbnail">
-			      <a href="#">
+			      <a href="../main/main.jsp?mode=1&cno=<%=vo.getCno()%>">
 			        <img src="<%=vo.getPoster() %>" alt="Lights" style="width:100%">
 			        <div class="caption">
 			          <p style="font-size: 8px"><%=vo.getTitle() %></p>
@@ -48,7 +48,7 @@
                %>
                        <div class="col-md-4">
         			    <div class="thumbnail">
-        			      <a href="#">
+        			      <a href="../main/main.jsp?mode=1&cno=<%=vo.getCno()%>">
         			        <img src="<%=vo.getPoster() %>" alt="Lights" style="width:100%">
         			        <div class="caption">
         			          <p style="font-size: 8px"><%=vo.getTitle() %></p>
@@ -69,7 +69,7 @@
                %>
                        <div class="col-md-3">
         			    <div class="thumbnail">
-        			      <a href="#">
+        			      <a href="../main/main.jsp?mode=1&cno=<%=vo.getCno()%>">
         			        <img src="<%=vo.getPoster() %>" alt="Lights" style="width:100%">
         			        <div class="caption">
         			          <p style="font-size: 8px"><%=vo.getTitle() %></p>
