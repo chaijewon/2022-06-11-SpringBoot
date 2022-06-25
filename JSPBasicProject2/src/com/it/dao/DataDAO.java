@@ -221,6 +221,48 @@ public class DataDAO {
 	   return vo;
    }
    // 4. 맛집 상세보기 
+   public FoodHouseVO foodDetailData(int no)
+   {
+	   // 결과값 => 리턴형 , 매개변수 => 사용자가 보내준 값
+	   FoodHouseVO vo=new FoodHouseVO(); // vo(한개에 대한 모든 정보)
+	   try
+	   {
+		   // 1. 연결 
+		   getConnection();
+		   // 2. SQL문장을 만든다 
+		   String sql="SELECT no,name,tel,type,time,parking,menu,poster,score "
+				     +"FROM food_house "
+				     +"WHERE no=?";
+		   // 3. MySQL로 SQL문장을 전송 
+		   ps=conn.prepareStatement(sql);
+		   // 4. 실행 요청전에 ?에 값을 채운다 
+		   ps.setInt(1, no);
+		   // 5. 실행한 결과를 가지고 온다 
+		   ResultSet rs=ps.executeQuery();
+		   // 6. 데이터가 있는 위치에 커서 이동 => next()
+		   rs.next();
+		   // 7. 결과값을 VO에 담는다 
+		   vo.setNo(rs.getInt(1));
+		   vo.setName(rs.getString(2));
+		   vo.setTel(rs.getString(3));
+		   vo.setType(rs.getString(4));
+		   vo.setTime(rs.getString(5));
+		   vo.setParking(rs.getString(6));
+		   vo.setMenu(rs.getString(7));
+		   vo.setPoster(rs.getString(8));
+		   vo.setScore(rs.getDouble(9));
+		   // 8. 메모리를 닫는다
+		   rs.close();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   disConnection();
+	   }
+	   return vo;
+   }
    // 5. 댓글 => 1. 목록 , 2. 추가 , 3. 수정 , 4. 삭제 => JQuery => 스프링 (VueJS),스프링-부트(react)
    // ==> 자바 == 자바스크립트 (Rest) => JSON
    // 6. 서울 명소 출력 
