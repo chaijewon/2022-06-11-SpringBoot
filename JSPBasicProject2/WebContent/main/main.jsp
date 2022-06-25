@@ -19,6 +19,9 @@
         case 2:
         	main_jsp="../food/food_detail.jsp";
         	break;
+        case 3:
+        	main_jsp="../seoul/location.jsp";
+        	break;
      }
 %>
 <!DOCTYPE html>

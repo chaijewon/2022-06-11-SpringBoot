@@ -268,6 +268,68 @@ public class DataDAO {
    // 5. 댓글 => 1. 목록 , 2. 추가 , 3. 수정 , 4. 삭제 => JQuery => 스프링 (VueJS),스프링-부트(react)
    // ==> 자바 == 자바스크립트 (Rest) => JSON
    // 6. 서울 명소 출력 
+   public List<SeoulLocationVO> seoulLocationData(int page)
+   {
+	   List<SeoulLocationVO> list=new ArrayList<SeoulLocationVO>();
+	   try
+	   {
+		   // 1. 연결 
+		   getConnection();
+		   // 2. SQL문장 
+		   String sql="SELECT no,name,poster "
+				     +"FROM seoul_location "
+				     +"ORDER BY no ASC "
+				     +"LIMIT ? , 8";
+		   // 1=>시작위치 , 2=>갯수 
+		   ps=conn.prepareStatement(sql);
+		   // ?에 값을 채운다 
+		   int start=(page*8)-8;
+		   ps.setInt(1, start);
+		   // 실행요청 
+		   ResultSet rs=ps.executeQuery();
+		   while(rs.next())
+		   {
+			   SeoulLocationVO vo=new SeoulLocationVO();
+			   vo.setNo(rs.getInt(1));
+			   vo.setTitle(rs.getString(2));
+			   vo.setPoster(rs.getString(3));
+			   list.add(vo);
+		   }
+		   rs.close();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();// 에러 처리 
+	   }
+	   finally
+	   {
+		   // 닫기
+		   disConnection();
+	   }
+	   return list;
+   }
+   // 총페이지 
+   public int locationTotalPage()
+   {
+	   int total=0;
+	   try
+	   {
+		   getConnection();
+		   String sql="SELECT CEIL(COUNT(*)/8.0) FROM seoul_location";
+		   ps=conn.prepareStatement(sql);
+		   ResultSet rs=ps.executeQuery();
+		   rs.next();
+		   total=rs.getInt(1);
+		   rs.close();
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   disConnection();
+	   }
+	   return total;
+   }
    
 }
 

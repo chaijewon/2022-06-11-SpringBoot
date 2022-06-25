@@ -53,10 +53,10 @@ public class SeoulMain {
 					   vo.setAddress(address.text());
 					   dao.seoulLocationInsert(vo);
 					   k++;
-				   }catch(Exception ex) {}
+				   }catch(Exception ex) {ex.printStackTrace();}
 			   }
 			}
-		}catch(Exception ex){}
+		}catch(Exception ex){ex.printStackTrace();}
 	}
 	
 	public void seoulHotel()
