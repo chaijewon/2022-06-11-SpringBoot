@@ -10,9 +10,9 @@ public class SeoulMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
         SeoulMain sm=new SeoulMain();
-        sm.seoulAttractions();
+        //sm.seoulAttractions();
         //sm.seoulNature();
-        //sm.seoulHotel();
+        sm.seoulHotel();
 	}
 	
 	public void seoulAttractions()
@@ -103,17 +103,18 @@ public class SeoulMain {
 					       vo.setName(title.get(j).text());
 					       vo.setAddress(address.text());
 					       vo.setPoster(poster.get(j).attr("src"));
-					       String s=score.get(j).attr("alt");
+					       //String s=score.get(j).attr("alt");
 					       // alt=""  평점:4.5
-					       s=s.substring(s.indexOf(":")+1);
-					       vo.setScore(Double.parseDouble(s.trim()));
+					       //s=s.substring(s.indexOf(":")+1);
+					       vo.setScore(0.0);
 					       vo.setImages(simg);
 					       dao.seoulHotelInsert(vo);
 						   k++;
-				   }catch(Exception ex) {}
+				   }catch(Exception ex) {ex.printStackTrace();}
 			   }
 			}
-		}catch(Exception ex){}
+		}catch(Exception ex){ex.printStackTrace();}
+	   
 	}
 	/*
 	 *  NO      NOT NULL NUMBER         

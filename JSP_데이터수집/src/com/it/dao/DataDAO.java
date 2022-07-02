@@ -203,23 +203,21 @@ public class DataDAO {
 	   try
 	   {
 		   getConnection();
-		   String sql="INSERT INTO foodlocation VALUES("
-				     +"?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		   String sql="INSERT INTO foodlocation(poster,name,score,address,tel,type,price,parking,time,menu) VALUES("
+				     +"?,?,?,?,?,?,?,?,?,?)";
 		   ps=conn.prepareStatement(sql);
-		   ps.setInt(1, vo.getNo());
-		   ps.setString(2, vo.getPoster());
-		   ps.setString(3, vo.getName());
-		   ps.setDouble(4, vo.getScore());
-		   ps.setString(5, vo.getAddress());
-		   ps.setString(6, vo.getTel());
-		   ps.setString(7, vo.getType());
-		   ps.setString(8, vo.getPrice());
-		   ps.setString(9, vo.getParking());
-		   ps.setString(10, vo.getTime());
-		   ps.setString(11, vo.getMenu());
-		   ps.setInt(12, vo.getGood());
-		   ps.setInt(13, vo.getSoso());
-		   ps.setInt(14, vo.getBad());
+		   //ps.setInt(1, vo.getNo());
+		   ps.setString(1, vo.getPoster());
+		   ps.setString(2, vo.getName());
+		   ps.setDouble(3, vo.getScore());
+		   ps.setString(4, vo.getAddress());
+		   ps.setString(5, vo.getTel());
+		   ps.setString(6, vo.getType());
+		   ps.setString(7, vo.getPrice());
+		   ps.setString(8, vo.getParking());
+		   ps.setString(9, vo.getTime());
+		   ps.setString(10, vo.getMenu());
+		  
 		   ps.executeUpdate();
 	   }catch(Exception ex)
 	   {
@@ -303,14 +301,14 @@ public class DataDAO {
 	   try
 	   {
 		   getConnection();
-		   String sql="INSERT INTO seoul_hotel VALUES(?,?,?,?,?,?)";
+		   String sql="INSERT INTO seoul_hotel(name,score,address,poster,images) VALUES(?,?,?,?,?)";
 		   ps=conn.prepareStatement(sql);
-		   ps.setInt(1, vo.getNo());
-		   ps.setString(2, vo.getName());
-		   ps.setDouble(3, vo.getScore());
-		   ps.setString(4, vo.getAddress());
-		   ps.setString(5, vo.getPoster());
-		   ps.setString(6, vo.getImages());
+		   
+		   ps.setString(1, vo.getName());
+		   ps.setDouble(2, vo.getScore());
+		   ps.setString(3, vo.getAddress());
+		   ps.setString(4, vo.getPoster());
+		   ps.setString(5, vo.getImages());
 		   ps.executeUpdate();
 	   }catch(Exception ex)
 	   {
@@ -334,13 +332,13 @@ ADDRESS NOT NULL VARCHAR2(300)
 	   try
 	   {
 		   getConnection();
-		   String sql="INSERT INTO seoul_nature VALUES(?,?,?,?,?)";
+		   String sql="INSERT INTO seoul_nature(name,poster,msg,address) VALUES(?,?,?,?)";
 		   ps=conn.prepareStatement(sql);
-		   ps.setInt(1, vo.getNo());
-		   ps.setString(2, vo.getTitle());
-		   ps.setString(4, vo.getPoster());
-		   ps.setString(5, vo.getMsg());
-		   ps.setString(3, vo.getAddress());
+		   
+		   ps.setString(1, vo.getTitle());
+		   ps.setString(2, vo.getPoster());
+		   ps.setString(3, vo.getMsg());
+		   ps.setString(4, vo.getAddress());
 		   ps.executeUpdate();
 	   }catch(Exception ex)
 	   {
