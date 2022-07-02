@@ -2,6 +2,7 @@ package com.it.dao;
 import java.util.*;
 
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
@@ -34,7 +35,10 @@ public class BoardDAO {
     */
    public static List<BoardVO> boardListData(int start)
    {
-	   return ssf.openSession().selectList("boardListData",start);
+	   SqlSession session=ssf.openSession();
+	   List<BoardVO> list=session.selectList("boardListData",start);
+	   session.close();
+	   return list;
    }
    /*
     *  <select id="boardTotalPage" resultType="int">
@@ -43,6 +47,9 @@ public class BoardDAO {
     */
    public static int boardTotalPage()
    {
-	   return ssf.openSession().selectOne("boardTotalPage");
+	   SqlSession session=ssf.openSession();
+	   int total=session.selectOne("boardTotalPage");
+	   session.close();
+	   return total;
    }
 }
