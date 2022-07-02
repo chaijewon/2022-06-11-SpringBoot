@@ -25,6 +25,40 @@
    <select id="boardTotalPage" resultType="int">
      SELECT CEIL(COUNT(*)/10.0) FROM freeboard
    </select>
+   <!-- SQL문장이 중복일 경우 -->
+   <sql id="where-no">
+     WHERE no=#{no}
+   </sql>
+   <!-- 상세보기 -->
+   <update id="hitIncrement" parameterType="int">
+     UPDATE freeboard SET
+     hit=hit+1
+     <include refid="where-no"/>
+   </update>
+   <select id="boardDetailData" resultType="BoardVO" parameterType="int">
+     SELECT no,name,subject,content,DATE_FORMAT(regdate,'%Y-%m-%d') as dbday,hit
+     FROM freeboard
+     <include refid="where-no"/>
+   </select>
+   
+   <!-- DELETE -->
+   <delete id="boardDelete" parameterType="int">
+     DELETE FROM freeboard
+     <include refid="where-no"/>
+   </delete>
+   
+   <!-- INSERT -->
+   <insert id="boardInsert" parameterType="BoardVO">
+     INSERT INTO freeboard(name,subject,content,pwd)
+     VALUES(#{name},#{subject},#{content},#{pwd})
+   </insert>
+   
+   <!-- UPDATE -->
+   <update id="boardUpdate" parameterType="BoardVO">
+     UPDATE freeboard SET
+     name=#{name},subject=#{subject},content=#{content}
+     <include refid="where-no"/>
+   </update>
 </mapper>
 
 
