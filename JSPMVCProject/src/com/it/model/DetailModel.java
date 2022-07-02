@@ -6,8 +6,9 @@ public class DetailModel implements Model{
 
 	@Override
 	public String execute(HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+		String msg="DetailModel 연결";
+		request.setAttribute("msg", msg);
+		return "board/detail.jsp";
 	}
 
 }

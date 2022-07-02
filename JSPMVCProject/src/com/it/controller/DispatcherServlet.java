@@ -1,6 +1,8 @@
 package com.it.controller;
 
 import java.io.*;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -81,7 +83,21 @@ public class DispatcherServlet extends HttpServlet {
     // 클라이언트 요청시마다 호출 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("Hello Controller!!");
+		//1. 사용자의 요청을 받는다 
+		String command=request.getRequestURI();
+		/*
+		 *   http://localhost/JSPMVCProject/list.do => URL
+		 *                   ---------------------- URI
+		 *                   -------------- ContextPath
+		 */
+		command=command.substring(request.getContextPath().length()+1);
+		//2. 요청=> 처리할 Model을 호출 
+		Model model=(Model)clsMap.get(command);
+		//3. JSP를 찾아서 request를 전송 
+		String jsp=model.execute(request);
+		//4. 전송 
+		RequestDispatcher rd=request.getRequestDispatcher(jsp);
+		rd.forward(request, response);
 	}
 
 }

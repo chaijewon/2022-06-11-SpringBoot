@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.dao.board-mapper">
+  <!-- 
+       (cache-ref | cache | resultMap* | parameterMap* | sql* | insert* | update* | delete* | select*)+
+         resultMap ==> ResultSet 설정 
+         sql => SQL문장이 반복인 경우 
+         insert => INSERT
+         update => UPDATE
+         delete => DELETE
+         select => SELECT
+   -->
+   <!-- id는 구분자 : 중복할 수 없다 -->
+   <!-- 전체 목록  
+        resultType : SQL문장을 실행후 받을 변수  
+        parameterType: ?에 값을 채운다
+   -->
+   <select id="boardListData" resultType="BoardVO" parameterType="int">
+     SELECT no,subject,name,DATE_FORMAT(regdate,'%Y-%m-%d') as dbday,hit
+     FROM freeboard
+     ORDER BY no DESC
+     LIMIT #{start},10
+   </select>
+   <!-- 총페이지 -->
+   <select id="boardTotalPage" resultType="int">
+     SELECT CEIL(COUNT(*)/10.0) FROM freeboard
+   </select>
+</mapper>
+
+
+
+
+
+
+
+
+

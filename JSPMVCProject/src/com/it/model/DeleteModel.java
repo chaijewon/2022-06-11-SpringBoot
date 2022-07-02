@@ -7,7 +7,9 @@ public class DeleteModel implements Model{
 	@Override
 	public String execute(HttpServletRequest request) {
 		// TODO Auto-generated method stub
-		return null;
+		String msg="DeleteModel 연결";
+		request.setAttribute("msg", msg);
+		return "board/delete.jsp";
 	}
 
 }
