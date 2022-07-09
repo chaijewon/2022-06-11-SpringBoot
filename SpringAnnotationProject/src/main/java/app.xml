@@ -20,12 +20,7 @@
     <!-- AOP등록 -->
     <!-- 데이터베이스 연결  (라이브러리 => XML) Boot- properties-->
     <!-- 1. 데이터베이스 정보를 전송 -->
-    <bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"
-       p:driverClassName="com.mysql.cj.jdbc.Driver"
-       p:url="jdbc:mysql://localhost:3306/db0611?serverTimezone=UTC"
-       p:username="root"
-       p:password="1111"
-    />
+    
     <!-- 2. 마이바티스 연결 -->
     <bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean"
        p:dataSource-ref="dataSource"
@@ -47,6 +42,12 @@
        p:mapperInterface="com.it.dao.EmpMapper"
     />
     <!-- 트랜잭션 설정 -->
+    <bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"
+       p:driverClassName="com.mysql.cj.jdbc.Driver"
+       p:url="jdbc:mysql://localhost:3306/db0611?serverTimezone=UTC"
+       p:username="root"
+       p:password="1111"
+    />
 </beans>
 
 
