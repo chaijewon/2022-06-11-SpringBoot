@@ -1,4 +1,5 @@
 package com.it.xml;
+import java.io.File;
 import java.util.*;
 import javax.xml.parsers.*;
 import org.w3c.dom.*;
@@ -27,6 +28,22 @@ public class ApplicationContext {
 		    *   bean   bean       bean
 		    *     리스트 형태 
 		    */
+		   Document doc=db.parse(new File(path));
+		   // Root 
+		   Element root=doc.getDocumentElement(); // beans
+		   // 같은 태그명을 모아서 처리 
+		   NodeList list=root.getElementsByTagName("bean");
+		   for(int i=0;i<list.getLength();i++)
+		   {
+			   // bean=> 처음부터 한개씩 읽어 온다 
+			   Element bean=(Element)list.item(i);
+			   String id=bean.getAttribute("id");
+			   String cls=bean.getAttribute("class");
+			   Class clsName=Class.forName(cls); // 클래스 정보 읽기
+			   Object obj=clsName.getDeclaredConstructor().newInstance();
+			   // 클래스 메모리 할당 
+			   map.put(id, obj); // new Oracle() => Singleton
+		   }
 	   }catch(Exception ex){}
    }
    // 클래스를 찾아준다 => DL

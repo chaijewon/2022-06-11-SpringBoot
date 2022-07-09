@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans>
-  <bean id="oracle" class="com.it.xml.Oracle"/>
+<beans><!-- 문서형 데이터베이스 : 테이블 -->
+  <bean id="oracle" class="com.it.xml.Oracle"/><!-- ROW  -->
+  <!--  id , class => 컬럼 -->
   <bean id="mysql" class="com.it.xml.MySql"/>
   <bean id="mariadb" class="com.it.xml.MariaDB"/>
 </beans>
