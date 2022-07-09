@@ -18,7 +18,7 @@
         @Configuration => XML에 대신 자바를 이용해서 환경 설정 
      -->
     <!-- AOP등록 -->
-    <!-- 데이터베이스 연결  (라이브러리 => XML)-->
+    <!-- 데이터베이스 연결  (라이브러리 => XML) Boot- properties-->
     <!-- 1. 데이터베이스 정보를 전송 -->
     <bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"
        p:driverClassName="com.mysql.cj.jdbc.Driver"
@@ -28,8 +28,19 @@
     />
     <!-- 2. 마이바티스 연결 -->
     <bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean"
-       p:dataSource-ref="ds"
+       p:dataSource-ref="dataSource"
     />
+    <bean id="dataSource" 
+          class="net.sf.log4jdbc.Log4jdbcProxyDataSource"> 
+      <constructor-arg ref="ds" /> 
+      <property name="logFormatter"> 
+        <bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter"> 
+        <property name="loggingType" value="MULTI_LINE" /> 
+        <property name="sqlPrefix" value="SQL : "/> 
+        </bean> 
+      </property> 
+    </bean>
+    
     <!-- 3. Mapper구현 요청 -->
     <bean id="mapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
        p:sqlSessionFactory-ref="ssf"
