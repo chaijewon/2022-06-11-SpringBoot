@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+  <bean id="oracle" class="com.it.xml.Oracle"/>
+  <bean id="mysql" class="com.it.xml.MySql"/>
+  <bean id="mariadb" class="com.it.xml.MariaDB"/>
+</beans>

@@ -75,7 +75,7 @@ public class MusicDAO {
 			while(rs.next())
 			{
 				MusicVO vo=new MusicVO();
-				vo.setMno(rs.getInt(1));
+				vo.setMno(rs.getInt(1));// vo.setMno(rs.getInt("mno"));
 				vo.setTitle(rs.getString(2));
 				vo.setSinger(rs.getString(3));
 				vo.setAlbum(rs.getString(4));
