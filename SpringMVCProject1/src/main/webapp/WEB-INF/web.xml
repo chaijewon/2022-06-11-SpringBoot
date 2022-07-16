@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <!-- servlet은 톰캣에 의해 호출 : servlet을 등록 
+         1. 브라우저(웹) ==> 요청을 받거나 데이터 전송 : Servlet , JSP
+            Servlet : 보안 , 로직 => 스프링은 서블릿으로 라이브러리를 제공  
+            JSP 화면 출력 (View)
+            
+                      스프링에서 제공하는 클래스
+            1) DispatcherServlet : Front Controller 
+                                                               사용자로부터 요청을 받고 요청처리에 대한 결과값을 전송 
+                            요청 => 요청 처리에 대한 가능(Model) => Controller 
+            2) HandlerMapping : Model을 찾아 준다 
+                                => 어노테이션을 이용해서 구분 (구분자)
+            3) ViewResolver : JSP를 찾아서 request,session를 전송 한다 
+            4) View : (JSP)
+     -->
+     <!--  Controller등록  
+     
+        public class DispatcherServlet extends HttpServlet
+        {
+             public void init(ServletConfig config)
+             {                              ======= web.xml을 읽어 온다 
+                 String path=config.getInitParameter("contextConfigLocation");
+             }
+             public void service(HttpServletRequest request,HttpServletResponse response)
+             {
+                                       요청을 받는다
+                          => HandlerMapping => 해당 클래스 찾기
+                             getBean() 
+                          => 기능 수행 
+                          => 결과값 (request,session)
+                          => ViewResolver전송 
+                          => JSP를 찾아서 ==> request,session전송 
+             }
+        }
+      
+     -->
+     <!-- 
+                    스프링 => 클래스 관리자 (객체 생성 ~ 객체 소멸)
+                application-*.xml => 관리할 대상의 클래스를 올려준다 
+                => xml이나 어노테이션을 통해서 선택적으로 클래스를 지정 
+                
+            => 자동 인식 XML 
+               <servlet-name>-servlet.xml  => /WEB-INF/
+               => dispatcher-servlet.xml
+      -->
+     <servlet>
+       <servlet-name>dispatcher</servlet-name>
+       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+       <init-param>
+         <param-name>contextConfigLocation</param-name>
+         <param-value>/WEB-INF/config/application-*.xml</param-value>
+         <!-- XML은 기능별로 나눠서 처리 
+              application-context.xml => 사용자 정의 클래스 등록
+              application-datasource.xml => 데이터베이스와 관련 
+              application-security.xml => 보안 
+         -->
+         <!--  클래스  등록 (Model , DAO...) 관리 -->
+       </init-param>
+     </servlet>
+     <!-- DispatcherServlet를 찾기 위해서는 어떤 URL설정 -->
+     <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>*.do</url-pattern>
+     </servlet-mapping>
+     <!--  한글변환  -->
+     <filter>
+	     <filter-name>encodingFilter</filter-name>
+	     <filter-class>
+	         org.springframework.web.filter.CharacterEncodingFilter
+	     </filter-class>
+	     <init-param>
+	         <param-name>encoding</param-name>
+	         <param-value>UTF-8</param-value>
+	     </init-param>
+	     <init-param>
+	         <param-name>forceEncoding</param-name>
+	         <param-value>true</param-value>
+	     </init-param>
+	 </filter>
+	 <filter-mapping>
+	     <filter-name>encodingFilter</filter-name>
+	     <url-pattern>/*</url-pattern>
+	 </filter-mapping>
+</web-app>
+
+
+
+
+
+
+

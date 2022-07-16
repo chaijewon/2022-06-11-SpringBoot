@@ -183,20 +183,17 @@ public class DataDAO {
    }
    // 지역별 맛집 => 캡쳐 
    /*
-    *   no NUMBER, -- 고유번호 
-   poster VARCHAR2(4000) CONSTRAINT fh1_poster_nn NOT NULL,
-   name VARCHAR2(200) CONSTRAINT fh1_title_nn NOT NULL,
-   score NUMBER(2,1) CONSTRAINT fh1_socre_nn NOT NULL,
-   address VARCHAR2(300) CONSTRAINT fh1_address_nn NOT NULL,
-   tel VARCHAR2(30) CONSTRAINT fh1_tel_nn NOT NULL,
-   type VARCHAR2(100) CONSTRAINT fh1_type_nn NOT NULL,
-   price VARCHAR2(50) CONSTRAINT fh1_price_nn NOT NULL,
-   parking VARCHAR2(20),
-   time VARCHAR2(50),
-   menu VARCHAR2(1000),
-   good NUMBER,
-   soso NUMBER,
-   bad NUMBER,
+    *  no int AI PK 
+poster varchar(2000) 
+name varchar(300) 
+score double 
+address varchar(2000) 
+tel varchar(20) 
+type varchar(100) 
+price varchar(30) 
+time varchar(50) 
+parking varchar(100) 
+menu varchar(4000)
     */
    public void foodLocationInsert(FoodLocationVO vo)
    {
