@@ -21,4 +21,13 @@ public class DataBoardDAO {
 	{
 		return mapper.databoardTotalPage();
 	}
+	public void databoardInsert(DataBoardVO vo)
+	{
+		mapper.databoardInsert(vo);
+	}
+	public DataBoardVO databoardDetailData(int no)
+	{
+		mapper.databoardHitIncrement(no);
+		return mapper.databoardDetailData(no);
+	}
 }
