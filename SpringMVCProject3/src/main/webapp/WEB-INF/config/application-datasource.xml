@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+    <!-- 데이터베이스 연동  -->
+	<!--  1. 데이터베이스 정보를 모아 둔다 : BasicDataSource -->
+	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"
+	    p:driverClassName="com.mysql.cj.jdbc.Driver"
+	    p:url="jdbc:mysql://localhost:3306/db0611?serverTimezone=UTC"
+	    p:username="root"
+	    p:password="1111"
+	/>
+	<!--  2. MyBatis로 전송 : SqlSessionFactoryBean-->
+	<bean id="ssf"
+	   class="org.mybatis.spring.SqlSessionFactoryBean"
+	   p:dataSource-ref="ds"
+	/>
+	<!--  3. Mapper를 구현 요청 : MapperFactoryBean-->
+	<bean id="mapper"
+	   class="org.mybatis.spring.mapper.MapperFactoryBean"
+	   p:sqlSessionFactory-ref="ssf"
+	   p:mapperInterface="com.it.dao.SeoulMapper"
+	/>
+
+</beans>
