@@ -23,7 +23,7 @@ public class DispatcherServlet extends HttpServlet {
 			String cmd=request.getRequestURI();
 			cmd=cmd.substring(request.getContextPath().length()+1);
 			// HandlerMapping 
-			Class clsName=Class.forName("com.it.controller.BoardController");
+			Class clsName=Class.forName("com.it.model.BoardController");
 			Object obj=clsName.getDeclaredConstructor().newInstance();
 			Method[] methods=clsName.getDeclaredMethods();
 			for(Method m:methods)
@@ -40,7 +40,7 @@ public class DispatcherServlet extends HttpServlet {
 				}
 			}
 			//
-		}catch(Exception ex){}
+		}catch(Exception ex){ex.printStackTrace();}
 	}
 
 }

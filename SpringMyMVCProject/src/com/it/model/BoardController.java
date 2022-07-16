@@ -3,7 +3,7 @@ package com.it.model;
 import javax.servlet.http.HttpServletRequest;
 
 import com.it.controller.RequestMapping;
-
+// 메모리
 public class BoardController {
    // 1. 목록 
    @RequestMapping("list.do")
