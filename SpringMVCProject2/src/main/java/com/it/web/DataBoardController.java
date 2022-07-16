@@ -6,8 +6,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.net.URLEncoder;
 import java.util.*;
+
+import javax.servlet.http.HttpServletResponse;
+
 import com.it.dao.*;
 // 요청 처리 => 요청을 받아서 처리 => 결과값을 request,session => HandlerMapping
 // 메모리 할당 
@@ -129,6 +136,30 @@ public class DataBoardController {
 	   model.addAttribute("nList", nList);
 	   model.addAttribute("sList", sList);
 	   return "databoard/detail";
+   }
+   @RequestMapping("download.do")
+   public void databoard_download(String fn,HttpServletResponse response)
+   {
+	   try
+	   {
+		   File file=new File("D:\\0611WeekDev\\upload\\"+fn);
+		   response.setHeader("Content-Disposition", "attachement;filename="
+				              +URLEncoder.encode(fn, "UTF-8"));
+		   response.setContentLength((int)file.length());
+		   
+		   BufferedInputStream bis=new BufferedInputStream(new FileInputStream(file));
+		   // 서버에 있는 파일 읽기
+		   BufferedOutputStream bos=new BufferedOutputStream(response.getOutputStream());
+		   // 다운로드 하는 사람 
+		   byte[] buffer=new byte[1024];
+		   int i=0; // 읽은 바이트 
+		   while((i=bis.read(buffer, 0, 1024))!=-1) //-1 (EOF)
+		   {
+			   bos.write(buffer, 0, i);
+		   }
+		   bis.close();
+		   bos.close();
+	   }catch(Exception ex){}
    }
 }
 
