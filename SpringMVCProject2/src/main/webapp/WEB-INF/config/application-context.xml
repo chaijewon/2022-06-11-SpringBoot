@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+    <!-- 사용자 정의 클래스 등록 , ViewResolver설정  -->
+    <context:component-scan base-package="com.it.*"/>
+    <!-- 
+         @Component, 일반 클래스 (MainClass)
+         ***@Repository, DAO (저장소) 
+         @Service, BI (DAO를 여러개 모아서 한번에 처리)
+         ***@Controller, Model클래스 = HandlerMapping => 파일을 지정 
+         ***@RestController, Model클래스 = 실제 값만 전송 => JavaScript (Vue,React,Ajax)
+         @ControllerAdvice, : 통합 예외처리 
+         @Configuration : 자바로 설정 파일 
+         = 클래스 분리 (가독성) = 선택적인 메모리 할당 
+     -->
+     <!-- ViewResolver : JSP를 찾는 역할 (경로명 , 확장자) -->
+     <bean id="viewResolver"
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+        p:prefix="/"
+        p:suffix=".jsp"
+      />
+      <!--   /databoard/list.jsp : STS 3.8.4 -->
+     <!-- 파일 업로드  -->
+     <!-- id는 스프링에서 사용되는 ID  -->
+     <bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+     />
+     <!-- 
+                   스프링 프레임워크 : 라이브러리 (이미 클래스가 제작)
+           => 메뉴얼을 제작해서 스프링으로 전송 
+              ===== XML 
+           => 스프링 5에서는 설정파일을 자바 
+           => ======================= 완전히 제거 (Spring-Boot)
+      -->
+</beans>
+
+
+
+
+
+
+
+
