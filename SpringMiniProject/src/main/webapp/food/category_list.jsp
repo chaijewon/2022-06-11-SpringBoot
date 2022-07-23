@@ -43,7 +43,7 @@
              <tr>
               <td width=30% class="text-center" rowspan="4">
                <a href="../food/food_detail_before.do?no=${fvo.no }">
-                <img src="${fvo.poster }" width=100%>
+                <img src="${fvo.poster }" style="width:300px;height: 180px">
                </a>
               </td>
               <td width=70%>
