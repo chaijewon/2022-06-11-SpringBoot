@@ -35,7 +35,7 @@ public interface SeoulMapper {
 	public int natureTotalPage();
    
 	@Select("SELECT no,poster,name FROM food_house "
-		   +"WHERE address LIKE CONCAT('%',#{name},'%')")
+		   +"WHERE address LIKE CONCAT('%',#{name},'%') LIMIT 0,5")
 	public List<FoodVO> foodLikeData(String name);
 }
 
