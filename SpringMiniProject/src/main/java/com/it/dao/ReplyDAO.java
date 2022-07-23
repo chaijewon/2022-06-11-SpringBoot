@@ -19,4 +19,14 @@ public class ReplyDAO {
   {
 	  mapper.replyInsert(vo);
   }
+  
+  public void replyUpdate(ReplyVO vo)
+  {
+	  mapper.replyUpdate(vo);
+  }
+  
+  public void replyDelete(int no)
+  {
+	  mapper.replyDelete(no);
+  }
 }

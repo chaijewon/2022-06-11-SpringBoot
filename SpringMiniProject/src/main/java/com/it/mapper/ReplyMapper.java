@@ -1,8 +1,10 @@
 package com.it.mapper;
 import java.util.*;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.it.vo.ReplyVO;
 public interface ReplyMapper {
@@ -15,5 +17,12 @@ public interface ReplyMapper {
    @Insert("INSERT INTO springreply(cno,type,id,name,msg) VALUES(#{cno},#{type},#{id},#{name},#{msg})")
    public void replyInsert(ReplyVO vo);
    // 수정 
+   @Update("UPDATE springreply SET "
+		  +"msg=#{msg} "
+		  +"WHERE no=#{no}")
+   public void replyUpdate(ReplyVO vo);
    // 삭제
+   @Delete("DELETE FROM springreply "
+		  +"WHERE no=#{no}")
+   public void replyDelete(int no);
 }
