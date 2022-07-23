@@ -23,5 +23,5 @@ menu varchar(4000)
 public class FoodVO {
   private int no,cno;
   private double score;
-  private String name,address,tel,type,price,time,parking,menu;
+  private String name,address,tel,type,price,time,parking,menu,poster;
 }
