@@ -86,6 +86,9 @@ public class SeoulController {
    public String location_detail(int no,Model model)
    {
 	   SeoulVO vo=dao.locationDetailData(no);
+	   String address=vo.getAddress();
+	   address=address.substring(address.indexOf(" ")+1);
+	   vo.setAddress(address);
 	   model.addAttribute("vo", vo);
 	   model.addAttribute("main_jsp", "../seoul/location_detail.jsp");
 	   return "main/main";
@@ -95,6 +98,9 @@ public class SeoulController {
    public String nature_detail(int no,Model model)
    {
 	   SeoulVO vo=dao.natureDetailData(no);
+	   String address=vo.getAddress();
+	   address=address.substring(address.indexOf(" ")+1);
+	   vo.setAddress(address);
 	   model.addAttribute("vo", vo);
 	   model.addAttribute("main_jsp", "../seoul/nature_detail.jsp");
 	   return "main/main";
