@@ -124,7 +124,7 @@ $(function(){
 	                <figure class="avatar">
 	                 <c:if test="${sessionScope.id==rvo.id}">
 	                   <span class="btn btn-xs btn-success updates" data-no="${rvo.no }" style="color:black">수정</span>
-	                   <a href="../reply/reply_delete.do?no=${rvo.no }&rno=${rvo.rno}&tp=1" class="btn btn-xs btn-warning" style="color:black">삭제</a>
+	                   <a href="../reply/reply_delete.do?no=${rvo.no }&rno=${rvo.cno}&type=1" class="btn btn-xs btn-warning" style="color:black">삭제</a>
 	                 </c:if>
 	                </figure>
 	                <address>
@@ -139,7 +139,7 @@ $(function(){
 	             <tr>
 	               <td>
 	                 <form method=post action="../reply/reply_update.do">
-	                     <input type="hidden" name=rno value="${vo.no }">
+	                     <input type="hidden" name=cno value="${vo.no }">
 	                     <input type=hidden name=no value="${rvo.no}">
 	                     <input type=hidden name=type value="1">
 		                 <textarea rows="5" name="msg" cols="48" style="float:left">${rvo.msg }</textarea>
@@ -159,7 +159,7 @@ $(function(){
 	             <tr>
 	               <td>
 	                 <form method=post action="../reply/reply_insert.do">
-	                     <input type="hidden" name=rno value="${vo.no }">
+	                     <input type="hidden" name=cno value="${vo.no }">
 	                     <input type=hidden name="type" value="1">
 		                 <textarea rows="5" name="msg" cols="48" style="float:left"></textarea>
 		                  <input type=submit value="댓글쓰기" class="btn btn-primary"
