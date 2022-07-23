@@ -17,6 +17,6 @@ import lombok.Setter;
 @Setter
 public class ReplyVO {
    private int no,cno,type;
-   private String id,name,msg;
+   private String id,name,msg,dbday;
    private Date regdate;
 }
