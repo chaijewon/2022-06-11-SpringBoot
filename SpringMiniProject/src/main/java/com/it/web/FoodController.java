@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.*;
 
@@ -47,7 +48,7 @@ public class FoodController {
 	
 	// login => ajax 
 	@RequestMapping("food/food_detail_before.do")
-	public String food_detail_before(int no,HttpServletResponse response)
+	public String food_detail_before(int no,HttpServletResponse response,RedirectAttributes ra)
 	{
 		// response => 전송 (HTML , Cookie전송)
 		Cookie cookie=new Cookie("food"+no, String.valueOf(no));
@@ -58,13 +59,25 @@ public class FoodController {
 		cookie.setPath("/");
 		// 4. response를 이용해서 전송
 		response.addCookie(cookie);
-		
+		ra.addAttribute("no", no); // sendRedirect() => 값을 전송 
 		return "redirect:../food/food_detail.do"; //food_detail.jsp로 이동 
 		/*
 		 *   자바(스프링에서) 다른 JSP로 이동 
 		 *   sendRedirect() => .do 재호출 
 		 *   forward() => request를 전송 
 		 */
+	}
+	
+	@RequestMapping("food/food_detail.do")
+	public String food_detail(int no,Model model)
+	{
+		FoodVO vo=dao.foodDetailData(no);
+		String address=vo.getAddress();
+		address=address.substring(0,address.indexOf("지"));
+		vo.setAddress(address.trim());
+		model.addAttribute("vo", vo);
+		model.addAttribute("main_jsp", "../food/food_detail.jsp");
+		return "main/main";
 	}
 	
 }
