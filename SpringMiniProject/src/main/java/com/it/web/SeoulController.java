@@ -82,6 +82,24 @@ public class SeoulController {
 	   return "main/main"; // 사이트를 출력 
    }
    
+   @RequestMapping("seoul/location_detail.do")
+   public String location_detail(int no,Model model)
+   {
+	   SeoulVO vo=dao.locationDetailData(no);
+	   model.addAttribute("vo", vo);
+	   model.addAttribute("main_jsp", "../seoul/location_detail.jsp");
+	   return "main/main";
+   }
+   
+   @RequestMapping("seoul/nature_detail.do")
+   public String nature_detail(int no,Model model)
+   {
+	   SeoulVO vo=dao.natureDetailData(no);
+	   model.addAttribute("vo", vo);
+	   model.addAttribute("main_jsp", "../seoul/nature_detail.jsp");
+	   return "main/main";
+   }
+   
 }
 
 

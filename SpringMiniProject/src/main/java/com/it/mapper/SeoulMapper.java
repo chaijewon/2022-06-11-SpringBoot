@@ -15,6 +15,16 @@ public interface SeoulMapper {
    @Select("SELECT CEIL(COUNT(*)/12.0) FROM seoul_location")
    public int locationTotalPage();
    
+   // 상세보기 
+   @Select("SELECT * FROM seoul_location "
+		  +"WHERE no=#{no}")
+   public SeoulVO locationDetailData(int no);
+   
+   
+   @Select("SELECT * FROM seoul_nature "
+			  +"WHERE no=#{no}")
+   public SeoulVO natureDetailData(int no);
+   
    @Select("SELECT * FROM seoul_nature "
 			  +"ORDER BY no ASC "
 			  +"LIMIT #{start} , 12")

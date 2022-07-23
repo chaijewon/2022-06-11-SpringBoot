@@ -41,6 +41,15 @@ public class SeoulDAO {
    {
 	   return mapper.natureTotalPage();
    }
+   
+   public SeoulVO locationDetailData(int no)
+   {
+	   return mapper.locationDetailData(no);
+   }
+   public SeoulVO natureDetailData(int no)
+   {
+	   return mapper.natureDetailData(no);
+   }
 }
 
 
