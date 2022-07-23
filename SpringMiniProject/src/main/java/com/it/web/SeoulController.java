@@ -48,7 +48,7 @@ public class SeoulController {
 	   model.addAttribute("totalpage", totalpage);
 	   model.addAttribute("startPage", startPage);
 	   model.addAttribute("endPage", endPage);
-	   model.addAttribute("main_jsp", "../seoul/seoul_location.jsp");
+	   model.addAttribute("main_jsp", "../seoul/location.jsp");
 	   return "main/main"; // 사이트를 출력 
    }
    
@@ -78,7 +78,7 @@ public class SeoulController {
 	   model.addAttribute("totalpage", totalpage);
 	   model.addAttribute("startPage", startPage);
 	   model.addAttribute("endPage", endPage);
-	   model.addAttribute("main_jsp", "../seoul/seoul_nature.jsp");
+	   model.addAttribute("main_jsp", "../seoul/nature.jsp");
 	   return "main/main"; // 사이트를 출력 
    }
    
