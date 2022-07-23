@@ -124,7 +124,7 @@ $(function(){
 	                <figure class="avatar">
 	                 <c:if test="${sessionScope.id==rvo.id}">
 	                   <span class="btn btn-xs btn-success updates" data-no="${rvo.no }" style="color:black">수정</span>
-	                   <a href="../reply/reply_delete.do?no=${rvo.no }&rno=${rvo.cno}&type=1" class="btn btn-xs btn-warning" style="color:black">삭제</a>
+	                   <a href="../reply/reply_delete.do?no=${rvo.no }&cno=${rvo.cno}&type=1" class="btn btn-xs btn-warning" style="color:black">삭제</a>
 	                 </c:if>
 	                </figure>
 	                <address>
