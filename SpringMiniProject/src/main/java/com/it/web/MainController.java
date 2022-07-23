@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.it.vo.*;
@@ -16,7 +18,7 @@ public class MainController {
    @Autowired
    private FoodDAO dao;
    @RequestMapping("main/main.do") 
-   public String main_page(Model model)
+   public String main_page(HttpServletRequest request,Model model)
    {
 	   // include에 포함할 jsp전송 
 	   // 스프링 => 데이터를 전송하는 객체 Model (request를 포함 => DispatcherServlet)
@@ -26,6 +28,25 @@ public class MainController {
 	   //home.jsp로 List => 받아서 출력 
 	   model.addAttribute("list", list);
 	   model.addAttribute("main_jsp", "../main/home.jsp");
+	   // 쿠키를 읽어 온다 
+	   Cookie[] cookies=request.getCookies();
+	   List<FoodVO> cList=new ArrayList<FoodVO>();
+	   if(cookies!=null && cookies.length>0)
+	   {
+		   for(int i=cookies.length-1;i>=0;i--)
+		   {
+			   if(cookies[i].getName().startsWith("food"))
+			   {
+				   String no=cookies[i].getValue();
+				   FoodVO vo=dao.foodDetailData(Integer.parseInt(no));
+				   String poster=vo.getPoster();
+				   poster=poster.substring(0,poster.indexOf("^"));
+				   vo.setPoster(poster);
+				   cList.add(vo);
+			   }
+		   }
+	   }
+	   model.addAttribute("cList", cList);
 	   return "main/main";
    }
    
