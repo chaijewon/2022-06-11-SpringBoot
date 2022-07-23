@@ -32,14 +32,14 @@ $(function(){
 	    	success:function(res)
 	    	{
 	    		let result=res.trim();
-	    		if(res=='NOID')
+	    		if(result=='NOID')
 	    		{
 	    			alert("아이디가 존재하지 않습니다");
 	    			$('#id').val("");
 	    			$('#pwd').val("");
 	    			$('#id').focus();
 	    		}
-	    		else if(res=='NOPWD')
+	    		else if(result=='NOPWD')
 	    		{
 	    			alert("비밀번호가 틀립니다");
 	    			$('#pwd').val("");
@@ -50,10 +50,10 @@ $(function(){
 	    			location.href="../main/main.do";
 	    		}
 	    	}
-	    })
+	    })//ajax
 	    
-	})
-}
+	})//click
+})//function
 </script>
 </head>
 <body>
