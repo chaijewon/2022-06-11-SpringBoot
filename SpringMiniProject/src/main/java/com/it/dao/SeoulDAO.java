@@ -50,6 +50,11 @@ public class SeoulDAO {
    {
 	   return mapper.natureDetailData(no);
    }
+   
+   public List<FoodVO> foodLikeData(String name)
+   {
+	   return mapper.foodLikeData(name);
+   }
 }
 
 

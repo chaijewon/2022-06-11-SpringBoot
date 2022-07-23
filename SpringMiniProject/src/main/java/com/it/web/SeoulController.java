@@ -91,6 +91,18 @@ public class SeoulController {
 	   vo.setAddress(address);
 	   model.addAttribute("vo", vo);
 	   model.addAttribute("main_jsp", "../seoul/location_detail.jsp");
+	   //  종로구
+	   String addr=vo.getAddress();
+	   String s1=addr.substring(addr.indexOf(" "));
+	   String s2=s1.trim().substring(0,s1.indexOf(" "));
+	   List<FoodVO> list=dao.foodLikeData(s2);
+	   for(FoodVO fvo:list)
+	   {
+		   String poster=fvo.getPoster();
+		   poster=poster.substring(0,poster.indexOf("^"));
+		   fvo.setPoster(poster);
+	   }
+	   model.addAttribute("list", list);
 	   return "main/main";
    }
    
@@ -103,6 +115,17 @@ public class SeoulController {
 	   vo.setAddress(address);
 	   model.addAttribute("vo", vo);
 	   model.addAttribute("main_jsp", "../seoul/nature_detail.jsp");
+	   String addr=vo.getAddress();
+	   String s1=addr.substring(addr.indexOf(" "));
+	   String s2=s1.trim().substring(0,s1.indexOf(" "));
+	   List<FoodVO> list=dao.foodLikeData(s2);
+	   for(FoodVO fvo:list)
+	   {
+		   String poster=fvo.getPoster();
+		   poster=poster.substring(0,poster.indexOf("^"));
+		   fvo.setPoster(poster);
+	   }
+	   model.addAttribute("list", list);
 	   return "main/main";
    }
    
