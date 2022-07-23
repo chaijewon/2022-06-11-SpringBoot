@@ -21,6 +21,8 @@ public class FoodController {
 	@Autowired //주소값을 주입 
 	private FoodDAO dao;
 	
+	@Autowired
+	private ReplyDAO rDao;
 	// 구분해서 수행 
 	@RequestMapping("food/category_list.do")
 	public String food_category_list(int cno,Model model)
@@ -77,6 +79,13 @@ public class FoodController {
 		vo.setAddress(address.trim());
 		model.addAttribute("vo", vo);
 		model.addAttribute("main_jsp", "../food/food_detail.jsp");
+		
+		ReplyVO rvo=new ReplyVO();
+		rvo.setCno(vo.getNo());
+		rvo.setType(1);
+		// 댓글 읽기
+		List<ReplyVO> rList=rDao.replyListData(rvo);
+		model.addAttribute("rList", rList);
 		return "main/main";
 	}
 	

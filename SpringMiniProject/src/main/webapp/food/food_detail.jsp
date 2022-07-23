@@ -141,7 +141,7 @@ $(function(){
 	                 <form method=post action="../reply/reply_update.do">
 	                     <input type="hidden" name=rno value="${vo.no }">
 	                     <input type=hidden name=no value="${rvo.no}">
-	                     <input type=hidden name=tp value="1">
+	                     <input type=hidden name=type value="1">
 		                 <textarea rows="5" name="msg" cols="48" style="float:left">${rvo.msg }</textarea>
 		                  <input type=submit value="댓글수정" class="btn btn-primary"
 		                  style="height: 30px">
