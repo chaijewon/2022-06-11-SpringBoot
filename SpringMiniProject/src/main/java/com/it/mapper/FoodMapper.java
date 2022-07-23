@@ -30,6 +30,17 @@ public interface FoodMapper {
   @Select("SELECT * FROM food_house "
 		 +"WHERE no=#{no}")
   public FoodVO foodDetailData(int no);
+  
+  //로그인 처리 
+  @Select("SELECT COUNT(*) FROM member "
+		 +"WHERE id=#{id}")
+  // ID존재여부 확인 
+  public int idCount(String id);
+  
+  @Select("SELECT pwd,name,admin FROM member "
+		 +"WHERE id=#{id}")
+  public MemberVO memberInfoData(String id);
+  
  
 }
 

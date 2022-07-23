@@ -41,6 +41,16 @@ public class FoodDAO {
 	{
 		return mapper.foodDetailData(no);
 	}
+	// ID존재 여부 확인 
+	public int idCount(String id)
+	{
+		return mapper.idCount(id);
+	}
+	// 비밀번호 확인 
+	public MemberVO memberInfoData(String id)
+	{
+		return mapper.memberInfoData(id);
+	}
 }
 
 
