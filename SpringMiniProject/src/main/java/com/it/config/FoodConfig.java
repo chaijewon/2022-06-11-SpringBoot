@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 // Spring 5 ==> Spring-Boot
-@Configuration
+@Configuration // XML대신 사용 
 /*
  *   <context:component-scan base-package="com.it.*"/>
      <!-- JSP 찾기 = jsp경로명 , 확장자 : ViewResolver-->
