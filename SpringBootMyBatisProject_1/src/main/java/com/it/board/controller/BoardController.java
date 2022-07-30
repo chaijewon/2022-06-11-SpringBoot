@@ -20,14 +20,22 @@ public class BoardController {
 	   if(page==null)
 		   page="1"; // default page
 	   int curpage=Integer.parseInt(page);
-	   int start=(curpage*10)-10;// 페이지의 시작 위치 
+	   //int start=(curpage*10)-10;// 페이지의 시작 위치 
+	   Map map=new HashMap();
+	   map.put("start", (curpage*10)-10);
+	   map.put("end",10);
 	   // 데이터베이스에 값을 얻어 온다 
-	   List<BoardVO> list=service.boardListData(start);
+	   List<BoardVO> list=service.boardListData(map);
+	   for(BoardVO vo:list)
+	   {
+		   System.out.println(vo.getDbday()+","+vo.getName());
+	   }
 	   int totalpage=service.boardTotalPage();
 	   // JSP에 출력할 데이터 전송 : Model(전송객체)
 	   model.addAttribute("curpage", curpage);
 	   model.addAttribute("totalpage", totalpage);
 	   model.addAttribute("list", list);
+	   //model.addAttribute("msg", "Hello Spring-Boot");
 	   
 	   return "list";
    }

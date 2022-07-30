@@ -12,7 +12,7 @@ public interface BoardMapper {
    *               -------------              -----------------------                -----
    *               메소드명                                              리턴형                                           매개변수
    */
-  public List<BoardVO> boardListData(int start); 
+  public List<BoardVO> boardListData(Map map); 
   // <select id="boardTotalPage" resultType="int">
   public int boardTotalPage();
 }

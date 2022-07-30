@@ -1,6 +1,7 @@
 package com.it.board.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,9 +15,9 @@ public class BoardServiceImpl implements BoardService{
 	@Autowired
 	private BoardMapper mapper; 
 	@Override
-	public List<BoardVO> boardListData(int start) {
+	public List<BoardVO> boardListData(Map map) {
 		// TODO Auto-generated method stub
-		return mapper.boardListData(start);
+		return mapper.boardListData(map);
 	}
 
 	@Override
@@ -24,5 +25,7 @@ public class BoardServiceImpl implements BoardService{
 		// TODO Auto-generated method stub
 		return mapper.boardTotalPage();
 	}
+
+	
 
 }
