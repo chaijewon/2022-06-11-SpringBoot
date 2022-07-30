@@ -39,6 +39,12 @@ public class BoardController {
 	   
 	   return "list";
    }
+   @GetMapping("/detail")
+   public String board_detail(int no,Model model)
+   {
+	   model.addAttribute("msg", no);
+	   return "detail";
+   }
 }
 
 
