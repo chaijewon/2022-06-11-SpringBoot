@@ -30,6 +30,17 @@ public class BoardController {
     	
     	return "list";
     }
+    
+    @GetMapping("/detail")
+    public String board_detail(int no,Model model)
+    {
+    	BoardEntity vo=dao.findByNo(no);
+    	vo.setHit(vo.getHit()+1);
+    	dao.save(vo);
+    	vo=dao.findByNo(no);
+    	model.addAttribute("vo", vo);
+    	return "detail";
+    }
 }
 
 

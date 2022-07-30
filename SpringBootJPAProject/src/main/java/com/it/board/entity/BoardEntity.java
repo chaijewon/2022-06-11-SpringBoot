@@ -1,6 +1,8 @@
 package com.it.board.entity;
 
-import java.time.LocalTime;
+
+import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,12 +18,12 @@ public class BoardEntity {
    @Id
    private int no;
    private String name,subject,content,pwd;
-   private LocalTime regdate;
+   private LocalDateTime regdate;
    private int hit;
    
    @PrePersist
    public void regdate()
    {
-	   this.regdate=LocalTime.now();
+	   regdate=LocalDateTime.now();
    }
 }
