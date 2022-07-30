@@ -1,6 +1,7 @@
 package com.it.food.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -23,6 +24,7 @@ menu varchar(4000)
 @Getter
 @Setter
 public class FoodEntity {
+	@Id
     private int no;
     private String poster,name,address,tel,type,price,time,parking,menu;
     private int cno;

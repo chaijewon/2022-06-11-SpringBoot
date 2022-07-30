@@ -19,6 +19,6 @@ public class FoodController {
     	// Model => 전송 
     	List<FoodEntity> list=dao.findAll();
     	model.addAttribute("list", list);
-    	return "music/list";
+    	return "food/list";
     }
 }
