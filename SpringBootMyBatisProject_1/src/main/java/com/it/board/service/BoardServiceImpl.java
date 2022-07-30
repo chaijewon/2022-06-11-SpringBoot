@@ -45,6 +45,12 @@ public class BoardServiceImpl implements BoardService{
 		mapper.boardInsert(vo);
 	}
 
+	@Override
+	public void boardDelete(int no) {
+		// TODO Auto-generated method stub
+		mapper.boardDelete(no);
+	}
+
 	
 
 }

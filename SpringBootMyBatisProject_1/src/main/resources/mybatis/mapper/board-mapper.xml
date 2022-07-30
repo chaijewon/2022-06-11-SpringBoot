@@ -32,6 +32,10 @@
   </insert>
   <!-- 수정  -->
   <!-- 삭제 -->
+  <delete id="boardDelete" parameterType="int">
+    DELETE FROM board
+    WHERE no=#{no}
+  </delete>
 </mapper>
 
 

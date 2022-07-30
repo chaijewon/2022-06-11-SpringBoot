@@ -21,4 +21,6 @@ public interface BoardMapper {
   public void hitIncrement(int no);
   // <insert id="boardInsert" parameterType="com.it.board.vo.BoardVO">
   public void boardInsert(BoardVO vo);
+  // <delete id="boardDelete" parameterType="int">
+  public void boardDelete(int no);
 }

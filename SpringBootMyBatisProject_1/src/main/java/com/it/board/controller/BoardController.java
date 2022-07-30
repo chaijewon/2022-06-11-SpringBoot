@@ -52,11 +52,18 @@ public class BoardController {
    {
 	   return "insert"; // /WEB-INF/jsp/insert.jsp
    }
-   @PostMapping("/insert_ok")
+   @PostMapping("/insert_ok") //Ajax,<form>
    public String board_insert_ok(BoardVO vo)
    {
 	   service.boardInsert(vo);
 	   return "redirect:/";// 목록으로 간다
+   }
+   
+   @GetMapping("/delete")
+   public String boardDelete(int no)
+   {
+	   service.boardDelete(no);
+	   return "redirect:/";
    }
    
 }
