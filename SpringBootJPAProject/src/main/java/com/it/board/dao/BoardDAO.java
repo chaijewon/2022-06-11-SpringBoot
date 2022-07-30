@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.it.board.entity.BoardEntity;
 import java.util.*;
-
+// Spring (JSP=MyBatis),Spring-Boot(HTML=JPA) => Thymeleaf
 @Repository
 public interface BoardDAO extends JpaRepository<BoardEntity, Integer>{
    // 목록
