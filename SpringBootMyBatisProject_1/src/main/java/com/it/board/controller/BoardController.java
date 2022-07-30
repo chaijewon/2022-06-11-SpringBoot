@@ -46,6 +46,11 @@ public class BoardController {
 	   model.addAttribute("vo", vo);
 	   return "detail";
    }
+   @GetMapping("/insert")
+   public String board_insert()
+   {
+	   return "insert"; // /WEB-INF/jsp/insert.jsp
+   }
 }
 
 

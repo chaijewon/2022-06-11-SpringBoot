@@ -19,4 +19,6 @@ public interface BoardMapper {
   public BoardVO boardDetailData(int no);
   // <update id="hitIncrement" parameterType="int">
   public void hitIncrement(int no);
+  // <insert id="boardInsert" parameterType="com.it.board.vo.BoardVO">
+  public void boardInsert(BoardVO vo);
 }

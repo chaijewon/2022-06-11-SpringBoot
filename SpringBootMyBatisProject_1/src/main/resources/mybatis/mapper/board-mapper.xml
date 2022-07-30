@@ -24,6 +24,12 @@
     FROM board
     WHERE no=#{no}
   </select>
+  <!-- 추가 -->
+  <insert id="boardInsert" parameterType="com.it.board.vo.BoardVO">
+    INSERT INTO board(name,subject,content,pwd)
+    VALUES(#{name},#{subject},#{content},#{pwd})
+    <!-- #{name} : vo.getName()  -->
+  </insert>
   <!-- 수정  -->
   <!-- 삭제 -->
 </mapper>

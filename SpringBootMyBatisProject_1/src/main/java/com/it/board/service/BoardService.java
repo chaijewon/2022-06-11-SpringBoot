@@ -10,4 +10,5 @@ public interface BoardService {
 	public int boardTotalPage();
 	public BoardVO boardDetailData(int no);
 	public void hitIncrement(int no);
+	public void boardInsert(BoardVO vo);
 }

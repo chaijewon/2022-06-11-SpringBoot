@@ -39,6 +39,12 @@ public class BoardServiceImpl implements BoardService{
 		mapper.hitIncrement(no);
 	}
 
+	@Override
+	public void boardInsert(BoardVO vo) {
+		// TODO Auto-generated method stub
+		mapper.boardInsert(vo);
+	}
+
 	
 
 }

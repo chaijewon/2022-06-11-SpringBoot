@@ -24,6 +24,11 @@
      <h1 class="text-center">자유 게시판</h1>
      <div class="row">
        <table class="table">
+         <tr>
+           <td><a href="/insert" class="btn btn-sm btn-primary">새글</a></td>
+         </tr>
+       </table>
+       <table class="table">
          <tr class="success">
            <th width=10% class="text-center">번호</th>
            <th width=45% class="text-center">제목</th>
