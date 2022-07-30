@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.*;
 import com.it.board.service.*;
@@ -51,6 +52,13 @@ public class BoardController {
    {
 	   return "insert"; // /WEB-INF/jsp/insert.jsp
    }
+   @PostMapping("/insert_ok")
+   public String board_insert_ok(BoardVO vo)
+   {
+	   service.boardInsert(vo);
+	   return "redirect:/";// 목록으로 간다
+   }
+   
 }
 
 

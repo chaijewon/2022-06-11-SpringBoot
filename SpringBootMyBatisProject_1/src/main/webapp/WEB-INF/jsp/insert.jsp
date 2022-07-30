@@ -23,7 +23,7 @@ h1{
 	<div class="container">
 	   <h1>글쓰기</h1>
 	   <div class="row">
-	    <form method="post" action="insert_ok.do">
+	    <form method="post" action="/insert_ok">
 	    <table class="table table-hover">
 	     <tr>
 	       <td width=15% class="text-right danger">이름</td>
