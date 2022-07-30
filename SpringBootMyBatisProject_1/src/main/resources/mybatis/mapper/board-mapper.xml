@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mybatis.mapper.board-mapper"></mapper>
+<mapper namespace="mybatis.mapper.board-mapper">
+  <select id="boardListData" resultType="com.it.board.vo.BoardVO" parameterType="int">
+    SELECT no,subject,name,DATE_FORMAT(regdate,'%Y-%m-%d') as dbday,hit
+    FROM board ORDER BY no DESC
+    LIMIT #{start} , 10
+  </select>
+</mapper>
