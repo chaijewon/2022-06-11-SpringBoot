@@ -15,4 +15,8 @@ public interface BoardMapper {
   public List<BoardVO> boardListData(Map map); 
   // <select id="boardTotalPage" resultType="int">
   public int boardTotalPage();
+  // <select id="boardDetailData" resultType="com.it.board.vo.BoardVO" parameterType="int">
+  public BoardVO boardDetailData(int no);
+  // <update id="hitIncrement" parameterType="int">
+  public void hitIncrement(int no);
 }

@@ -13,7 +13,19 @@
     SELECT CEIL(COUNT(*)/10.0) FROM board
   </select>
   <!-- 조회수 증가 -->
+  <update id="hitIncrement" parameterType="int">
+    UPDATE board SET
+    hit=hit+1
+    WHERE no=#{no}
+  </update>
   <!-- 상세보기 -->
+  <select id="boardDetailData" resultType="com.it.board.vo.BoardVO" parameterType="int">
+    SELECT no,name,subject,content,DATE_FORMAT(regdate,'%Y-%m-%d') as dbday,hit
+    FROM board
+    WHERE no=#{no}
+  </select>
   <!-- 수정  -->
   <!-- 삭제 -->
 </mapper>
+
+
