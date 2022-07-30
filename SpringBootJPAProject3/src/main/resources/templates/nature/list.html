@@ -5,8 +5,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <center>
-    <h1>자연 메인</h1>
-  </center>
+  <div class="container">
+    <div class="row">
+       <div class="col-md-3" th:each="vo:${list}">
+	      <div class="thumbnail">
+	        <a href="#">
+	          <img th:src="${vo.poster}"  style="width:220px;height:200px">
+	          <div class="caption">
+	            <p th:text="${vo.name}"></p>
+	          </div>
+	        </a>
+	      </div>
+	    </div>
+    </div>
+   </div>
 </body>
 </html>

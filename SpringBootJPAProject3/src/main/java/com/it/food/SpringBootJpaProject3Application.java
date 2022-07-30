@@ -5,7 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.it.food.controller"})
+@ComponentScan(basePackages = {"com.it.food.controller",
+		"com.it.food.entity","com.it.food.dao"})
 public class SpringBootJpaProject3Application {
 
 	public static void main(String[] args) {
