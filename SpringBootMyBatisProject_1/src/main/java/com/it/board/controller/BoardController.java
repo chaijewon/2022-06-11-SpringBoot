@@ -42,7 +42,8 @@ public class BoardController {
    @GetMapping("/detail")
    public String board_detail(int no,Model model)
    {
-	   model.addAttribute("msg", no);
+	   BoardVO vo=service.boardDetailData(no);
+	   model.addAttribute("vo", vo);
 	   return "detail";
    }
 }
