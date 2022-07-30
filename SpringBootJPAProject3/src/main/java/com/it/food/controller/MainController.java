@@ -48,9 +48,16 @@ public class MainController {
 	   return "main";
    }
    @GetMapping("/location/list")
-   public String location_list(Model model)
+   public String location_list(String page,Model model)
    {
-	   List<LocationEntity> list=ldao.findAll();
+	   if(page==null)
+		   page="1";
+	   int curpage=Integer.parseInt(page);
+	   int start=(curpage*12)-12;
+	   List<LocationEntity> list=ldao.locationListData(start);
+	   int totalpage=ldao.locationTotalPage();
+	   model.addAttribute("curpage", curpage);
+	   model.addAttribute("totalpage", totalpage);
 	   model.addAttribute("list", list);
 	   model.addAttribute("main_content", "location/list");
 	   return "main";
@@ -61,6 +68,14 @@ public class MainController {
 	   List<NatureEntity> list=ndao.findAll();
 	   model.addAttribute("list", list);
 	   model.addAttribute("main_content", "nature/list");
+	   return "main";
+   }
+   @GetMapping("/location/detail")
+   public String location_detail(int no,Model model)
+   {
+	   LocationEntity vo=ldao.findByNo(no);
+	   model.addAttribute("vo", vo);
+	   model.addAttribute("main_content", "location/detail");
 	   return "main";
    }
 }

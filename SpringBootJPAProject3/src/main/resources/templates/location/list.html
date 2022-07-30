@@ -9,7 +9,7 @@
     <div class="row">
        <div class="col-md-3" th:each="vo:${list}">
 	      <div class="thumbnail">
-	        <a href="#">
+	        <a th:href="@{/location/detail(no=${vo.no})}">
 	          <img th:src="${vo.poster}"  style="width:220px;height:200px">
 	          <div class="caption">
 	            <p th:text="${vo.name}"></p>
@@ -17,6 +17,15 @@
 	        </a>
 	      </div>
 	    </div>
+    </div>
+    <div style="height: 20px"></div>
+    <div class="row">
+     <div class="text-center">
+       <a th:href="@{/location/list(page=${curpage>1?curpage-1:curpage})}" class="btn btn-sm btn-primary">이전</a>
+         <span th:text="${curpage}"></span> page /
+         <span th:text="${totalpage}"></span> pages
+       <a th:href="@{/location/list(page=${curpage<totalpage?curpage+1:curpage})}" class="btn btn-sm btn-primary">다음</a>
+     </div>
     </div>
    </div>
 </body>
