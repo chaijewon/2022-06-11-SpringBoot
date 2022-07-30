@@ -13,7 +13,7 @@ public class FoodController {
     @Autowired // 이미 메모리 할당된 주소값을 자동으로 받는다 
     private FoodDAO dao;
     
-    @GetMapping("/food/list")
+    @GetMapping("/list")
     public String food_list(Model model)
     {
     	// Model => 전송 
