@@ -14,10 +14,36 @@ public class MainController {
    
    @Autowired
    private NatureDAO ndao;
+   
+   @Autowired
+   private FoodDAO fdao;
 	
    @GetMapping("/main")
-   public String main_page(Model model)
+   public String main_page(String no,Model model)
    {
+	   if(no==null)
+		   no="1";
+	   int i=Integer.parseInt(no);
+	   int start=0,end=0;
+	   if(i==1)
+	   {
+		   start=1;
+		   end=12;
+	   }
+	   else if(i==2)
+	   {
+		   start=13;
+		   end=18;
+	   }
+	   else if(i==3)
+	   {
+		   start=19;
+		   end=30;
+	   }
+	   
+	   List<FoodEntity> list=fdao.foodCategoryData(start, end);
+	   model.addAttribute("list", list);
+	   
 	   model.addAttribute("main_content", "food/list");
 	   return "main";
    }

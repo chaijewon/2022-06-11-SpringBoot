@@ -5,8 +5,27 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <center>
-    <h1>맛집 메인</h1>
-  </center>
+  <div class="container">
+    <div class="row">
+      <div class="text-center">
+       <a th:href="@{/main(no=1)}" class="btn btn-sm btn-danger">믿고 보는 맛집 리스트</a>
+       <a th:href="@{/main(no=2)}" class="btn btn-sm btn-danger">지역별 인기 맛집</a>
+       <a th:href="@{/main(no=3)}" class="btn btn-sm btn-danger">메뉴별 인기 맛집</a>
+      </div>
+    </div>
+    <div style="height: 30px"></div>
+    <div class="row">
+       <div class="col-md-4" th:each="vo:${list}">
+	      <div class="thumbnail">
+	        <a href="#">
+	          <img th:src="${vo.poster}"  style="width:100%">
+	          <div class="caption">
+	            <p th:text="${vo.title}"></p>
+	          </div>
+	        </a>
+	      </div>
+	    </div>
+    </div>
+   </div>
 </body>
 </html>
