@@ -6,7 +6,7 @@
     parameterType="hashmap">
     SELECT no,subject,name,DATE_FORMAT(regdate,'%Y-%m-%d') as dbday,hit
     FROM board ORDER BY no DESC
-    LIMIT #{start} , #{end}
+    LIMIT #{start},#{end}
   </select>
   <!-- 총페이지 구하기 -->
   <select id="boardTotalPage" resultType="int">
